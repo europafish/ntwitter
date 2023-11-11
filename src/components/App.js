@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        //setIsLoggedIn(user);
+        //setIsLoggedIn(user);code
         //setUserObj(user);
         setUserObj({
           uid: user.uid,
@@ -19,6 +19,7 @@ const App = () => {
         });
       } else {
         //   setIsLoggedIn(false);
+        setUserObj(false);
       }
     });
 
