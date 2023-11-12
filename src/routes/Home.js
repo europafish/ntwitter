@@ -21,29 +21,43 @@ const Home = ({ userObj }) => {
   useEffect(() => {
     //getNweet();
 
-    dbService.collection("nweet").onSnapshot((snapshot) => {
-      const newArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+    dbService
+      .collection("nweet")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const newArray = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-      setNweets(newArray);
-    });
+        setNweets(newArray);
+      });
   }, []);
 
   return (
-    <>
-      <NweetFactory userObj={userObj} />
-      <div>
-        {nweets.map((nweet) => (
-          <Nweet
-            key={nweet.id}
-            nweetObj={nweet}
-            isOwner={nweet.creatorId === userObj.uid}
-          />
-        ))}
+    <div
+      style={{
+        maxWidth: 890,
+        width: "100%",
+        margin: "0 auto",
+        marginTop: 80,
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div className="container">
+        <NweetFactory userObj={userObj} />
+        <div style={{ marginTop: 30 }}>
+          {nweets.map((nweet) => (
+            <Nweet
+              key={nweet.id}
+              nweetObj={nweet}
+              isOwner={nweet.creatorId === userObj.uid}
+            />
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 
   return <span>Home</span>;
