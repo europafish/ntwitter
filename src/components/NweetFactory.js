@@ -79,32 +79,32 @@ const NweetFactory = ({ userObj }) => {
           required
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
-        <label htmlfor="attach-file" className="factoryInput__label">
-          <span>Add photos</span>
-          <FontAwesomeIcon icon={faPlus} />
-        </label>
-        <input
-          type="file"
-          id="attach-file"
-          style={{ opacity: 0 }}
-          accept="image/*"
-          onChange={onFileChange}
-        />
-        {attachment && (
-          <div className="facotryForm__attachment">
-            <img
-              src={attachment}
-              width="50px"
-              height="50px"
-              style={{ backgroundImage: attachment }}
-            />
-            <div className="factoryForm__clear" onClick={onClearAttach}>
-              <span>Remove</span>
-              <FontAwesomeIcon icon={faTimes} />
-            </div>
-          </div>
-        )}
       </div>
+      <label htmlFor="attach-file" className="factoryInput__label">
+        <span>Add photos</span>
+        <FontAwesomeIcon icon={faPlus} />
+      </label>
+      <input
+        type="file"
+        id="attach-file"
+        style={{ opacity: 0 }}
+        accept="image/*"
+        onChange={onFileChange}
+      />
+      {attachment && (
+        <div className="facotryForm__attachment">
+          <img
+            src={attachment}
+            width="50px"
+            height="50px"
+            style={{ backgroundImage: attachment }}
+          />
+          <div className="factoryForm__clear" onClick={onClearAttach}>
+            <span>Remove</span>
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
+        </div>
+      )}
     </form>
   );
 };
